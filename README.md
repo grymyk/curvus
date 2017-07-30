@@ -1,2 +1,2 @@
-#Curvus -- Analytic Geometry on HTML5 Canvas
+# Curvus -- Analytic Geometry on HTML5 Canvas
 
