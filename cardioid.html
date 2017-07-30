@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Cardioid</title>
+    <script src="animate.js"></script>
+    <script type="text/javascript">
+		function bodyLoadHandler() {
+			function outputAngle(angle) {
+				var status = document.getElementById('status').value = angle;
+			}
+			
+			function drawLine(radian) {
+				var x0 = 0;
+				var y0 = 0;
+				
+				var a = 25;
+				
+				//var l = Math.cos(radian);
+				//var m = Math.sin(radian);
+				
+				//var radius = 2 * a * (1 + Math.cos(radian));
+				
+				//drawRadiusVector();
+				
+				//drawPointSpiral();
+				
+				drawCardioid();
+				
+				var options = {
+					a: 25,
+					duration: 8000
+				};
+				
+				//animate(drawSegmentLine, options);
+				
+				function drawRadiusVector() {
+					ctx.clearRect(0, 0, canvas.width, canvas.height);
+					
+					ctx.beginPath();
+					
+					for (var t = 0; t < radius; t += 1) {
+						var x = l * t + x0;
+						var y = m * t + y0;
+						
+						ctx.lineTo(x, y);
+					}
+					
+					ctx.stroke();
+				}
+				
+				function drawPointSpiral() {
+					var Mx = l * radius + x0;
+					var My = m * radius + y0;
+					
+					ctx.fillRect(Mx, My, 1, 1);
+				}
+				
+				function drawCardioid() {
+					var period = 2 * Math.PI;
+					var step = Math.PI / 360;
+					
+					var maxX = 3 * a;
+					var maxY = a * (2 * Math.sin( Math.PI / 3) + Math.sin(2 * Math.PI / 3));
+					
+					ctx.translate(maxX, maxY);
+					ctx.rotate(Math.PI / 2);
+					
+					for (var t = 0; t < period; t += step) {
+//  						var Cx = a * (2 * Math.cos(t) - Math.cos(2 * t)) + x0;
+//  						var Cy = a * (2 * Math.sin(t) - Math.sin(2 * t)) + y0;
+//  						
+//  						ctx.fillRect(Cx, Cy, 1, 1);
+
+ 						var l = Math.cos(t);
+ 						var m = Math.sin(t);
+ 						var radius = 2 * a * (1 + Math.cos(t));
+ 						
+ 						var Mx = radius * l + x0;
+ 						var My = radius * m + y0;
+ 						
+ 						ctx.fillRect(Mx, My, 1, 1);
+					}
+				}
+				
+				function drawSegmentRect(t, options) {
+					var x0 = canvas.width / 2;
+					var y0 = canvas.height / 2;
+					
+					var period = 2 * Math.PI;
+					
+					var fi = period / options.duration * t;
+					
+					var Cx = options.a * (2 * Math.cos(t) - Math.cos(2 * t)) + x0;
+					var Cy = options.a * (2 * Math.sin(t) - Math.sin(2 * t)) + y0;
+					
+					ctx.fillRect(Cx, Cy, 1, 1);
+					
+				}
+				
+				function drawSegmentLine(t, options) {
+					var x0 = canvas.width / 2;
+					var y0 = canvas.height / 2;
+					
+					var period = 2 * Math.PI;
+					
+					var fi = period / options.duration * t + Math.PI / 2;
+					
+					for (var i = 0; i < 2; i += 1) {
+						var Cx = options.a * (2 * Math.cos(fi) - Math.cos(2 * fi)) + x0;
+						var Cy = options.a * (2 * Math.sin(fi) - Math.sin(2 * fi)) + y0;
+						
+						ctx.lineTo(Cx, Cy);
+					}
+					
+					ctx.stroke();
+				}
+			}
+			
+			function handler(event) {
+				var target = event.target;
+				
+				var degree = +target.value;
+				var radian = Math.PI / 180 * degree;
+				
+				outputAngle(degree);
+
+				drawLine(radian);
+			}
+			
+			var canvas = document.getElementById('tutorial');
+			
+			if (canvas.getContext) {
+				var ctx = canvas.getContext('2d');
+				
+				var input = document.getElementById('angle');
+				
+				input.addEventListener('change', handler);
+				
+				var degree = 0;
+			
+				outputAngle(degree);
+				drawLine(degree);
+			}
+		}
+    </script>
+    <style type="text/css">
+        canvas { border: 1px solid black; }
+    </style>
+</head>
+<body onload="bodyLoadHandler();">
+	<h1>Cardioid</h1>
+    <div>
+        <label for="angle">Angle</label>
+        <input id="angle" type="number" step="1" />
+        <output id="status"></output>
+    </div>
+    <canvas id="tutorial" width="300" height="300"></canvas>
+</body>
+</html>

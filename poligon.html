@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Poligon</title>
+    <script type="text/javascript">
+        function draw() {
+            var canvas = document.getElementById('tutorial');
+            
+            if (canvas.getContext) {
+                var ctx = canvas.getContext('2d');
+                
+                var points = [
+					{
+						x: 30,
+						y: 10
+					}, {
+						x: 10,
+						y: 30
+					}, {
+						x: 50,
+						y: 40
+					}
+                ];
+                
+                function drawPoligon(points) {
+					var Ox = points[0].x;
+					var Oy = points[0].y;
+					
+					ctx.beginPath();
+					
+					ctx.moveTo(Ox, Oy);
+					
+					points.forEach(function(elem, i) {
+						console.log(elem);
+					
+						if (i) {
+							ctx.lineTo(elem.x, elem.y);
+						}
+					});
+					
+					ctx.closePath();
+					
+					ctx.stroke();
+                }
+                
+                drawPoligon(points);
+            }
+        }
+    </script>
+    <style type="text/css">
+        canvas { border: 1px solid black; }
+    </style>
+</head>
+<body onload="draw();">
+	<h1>Polygon</h1>
+    <canvas id="tutorial" width="150" height="150"></canvas>
+</body>
+</html>
+

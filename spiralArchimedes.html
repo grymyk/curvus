@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Spiral Archimedes</title>
+    <script src="animate.js"></script>
+    <script type="text/javascript">
+		function bodyLoadHandler() {
+			function outputAngle(angle) {
+				var status = document.getElementById('status').value = angle;
+			}
+			
+			function drawLine(radian) {
+				var x0 = 150;
+				var y0 = 150;
+				
+				var a = 5;
+				
+				var l = Math.cos(radian);
+				var m = Math.sin(radian);
+				
+				var radius = a * radian;
+				
+				drawRadiusVector();
+				
+				drawPointSpiral();
+				
+				drawSpiral();
+				
+				var left = {};
+				left.a = 5;
+				left.duration = 4000;
+				
+				var right = {};
+				right.a = -5;
+				right.duration = 4000;
+				
+				//animate(drawSegment, left);
+				
+				//animate(drawSegment, right);
+				
+				function drawRadiusVector() {
+					ctx.clearRect(0, 0, canvas.width, canvas.height);
+					
+					ctx.beginPath();
+					
+					for (var t = 0; t < radius; t += 1) {
+						var x = l * t + x0;
+						var y = m * t + y0;
+						
+						ctx.lineTo(x, y);
+					}
+					
+					ctx.stroke();
+				}
+				
+				function drawPointSpiral() {
+					var halfSize = 2;
+				
+					var Mx = l * radius + x0;
+					var My = m * radius + y0;
+					
+					ctx.fillRect(Mx, My, 1, 1);
+				}
+				
+				function drawSpiral() {
+					var period = 4 * Math.PI;
+					
+					ctx.clearRect(0, 0, canvas.width, canvas.height);
+					
+					ctx.beginPath();
+					
+					for (var t = 0; t < period; t += Math.PI / 120) {
+						var Cx = a * t * Math.cos(t) + x0;
+						var Cy = a * t * Math.sin(t) + y0;
+						
+						ctx.fillRect(Cx, Cy, 1, 1);
+					}
+					
+					ctx.stroke();
+				}
+				
+				function drawSegment(t, options) {
+					ctx.clearRect(0, 0, canvas.width, canvas.height);
+					
+					var x0 = canvas.width / 2;
+					var y0 = canvas.height / 2;
+					
+					var period = 4 * Math.PI;
+					
+					var fi = period / options.duration * t;
+					
+					//ctx.beginPath();
+					
+					for (var i = 0; i < 2; i += 1) {
+						var Cx = options.a * Math.cos(fi) * fi + x0;
+						var Cy = options.a * Math.sin(fi) * fi + y0;
+						
+						ctx.lineTo(Cx, Cy);
+					}
+					
+					ctx.stroke();
+				}
+			}
+			
+			function handler(event) {
+				var target = event.target;
+				
+				var degree = +target.value;
+				var radian = Math.PI / 180 * degree;
+				
+				outputAngle(degree);
+
+				drawLine(radian);
+			}
+			
+			var canvas = document.getElementById('tutorial');
+			
+			if (canvas.getContext) {
+				var ctx = canvas.getContext('2d');
+				
+				var input = document.getElementById('angle');
+				
+				input.addEventListener('change', handler);
+				
+				var degree = 0;
+			
+				outputAngle(degree);
+				drawLine(degree);
+			}
+		}
+    </script>
+    <style type="text/css">
+        canvas { border: 1px solid #000; }
+    </style>
+</head>
+<body onload="bodyLoadHandler();">
+	<h1>Archimedean Spiral</h1>
+    <div>
+        <label for="angle">Angle</label>
+        <input id="angle" type="number" step="1" />
+        <output id="status"></output>
+    </div>
+    <canvas id="tutorial" width="300" height="300"></canvas>
+</body>
+</html>

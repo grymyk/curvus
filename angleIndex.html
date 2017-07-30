@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Angle Index | Line</title>
+    <script type="text/javascript">
+		function bodyLoadHandler() {
+			function outputAngle(angle) {
+				var status = document.getElementById('status').value = angle;
+			}
+			
+			function drawLine(radian) {
+				var k = Math.tan(radian);
+				var b = 0;
+				var radius = 150;
+				
+				var len = radius * Math.cos(radian);
+				
+				ctx.beginPath();
+				
+				for (var x = 0; x < len; x += 1) {
+					var y = k * x + b;
+					
+					ctx.lineTo(x, y);
+				}
+				
+				ctx.stroke();
+				
+				var Rx = len - 5;
+				var Ry = k * len + b - 5;
+				
+				ctx.fillRect(Rx, Ry, 10, 10);
+			}
+			
+			function handler(event) {
+				var target = event.target;
+				
+				var degree = +target.value;
+				var radian = Math.PI / 180 * degree;
+				
+				outputAngle(degree);
+				
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+				drawLine(radian);
+			}
+			
+			var canvas = document.getElementById('tutorial');
+			
+			if (canvas.getContext) {
+				var ctx = canvas.getContext('2d');
+				
+				var input = document.getElementById('angle');
+				
+				input.addEventListener('change', handler);
+				
+				var degree = 45;
+			
+				outputAngle(degree);
+				drawLine(degree);
+			}
+		}
+    </script>
+    <style type="text/css">
+        canvas { border: 1px solid #000; }
+    </style>
+</head>
+<body onload="bodyLoadHandler();">
+	<h1>Angle</h1>
+    <div>
+        <label for="angle">Angle</label>
+        <input id="angle" type="range" min="0" max="89" step="1" />
+        <output id="status"></output>
+    </div>
+    <canvas id="tutorial" width="150" height="150"></canvas>
+</body>
+</html>

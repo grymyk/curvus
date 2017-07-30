@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Polar Coordinate System</title>
+    <script src="animate.js"></script>
+    <script type="text/javascript">
+		function bodyLoadHandler() {
+			function outputAngle(angle) {
+				var status = document.getElementById('status').value = angle;
+			}
+			
+			function drawLine(radian) {
+				var x0 = 150;
+				var y0 = 150;
+				
+				var radius = 100;
+				
+				var l = Math.cos(radian);
+				var m = Math.sin(radian);
+				
+				//drawRadiusVector();
+				
+				//drawPointCirle();
+				
+				//drawCirle();
+				
+				animate(drawSegment, 2000);
+			
+				function drawRadiusVector() {
+					ctx.clearRect(0, 0, canvas.width, canvas.height);
+					
+					ctx.beginPath();
+				
+					for (var t = 0; t < radius; t += 1) {
+						var x = l * t + x0;
+						var y = m * t + y0;
+						
+						ctx.lineTo(x, y);
+					}
+					
+					ctx.stroke();
+				}
+				
+				function drawPointCirle() {
+					var halfSize = 5;
+					var mathPointSize = 10;
+					var halfSize = mathPointSize / 2;
+					
+					var Mx = l * radius + x0 - halfSize;
+					var My = m * radius + y0 - halfSize;
+					
+					ctx.fillRect(Mx, My, mathPointSize, mathPointSize);
+					
+					ctx.beginPath();
+				}
+				
+				function drawCirle() {
+					ctx.clearRect(0, 0, canvas.width, canvas.height);
+				
+					for (var fi = 0; fi < 2 * Math.PI; fi += Math.PI / 30) {
+						var Cx = radius * Math.cos(fi) + x0;
+						var Cy = radius * Math.sin(fi) + y0;
+						
+						ctx.lineTo(Cx, Cy);
+					}
+					
+					ctx.stroke();
+				}
+				
+				function drawSegment(t, duration) {
+					ctx.clearRect(0, 0, canvas.width, canvas.height);
+					
+					var x0 = canvas.width / 2;
+					var y0 = canvas.height / 2;
+					
+					var period = 2 * Math.PI;
+					
+					var fi = period / duration  * t;
+					
+					
+					for (var i = 0; i < 2; i += 1) {
+						var Cx = radius * Math.cos(fi) + x0;
+						var Cy = radius * Math.sin(fi) + y0;
+						
+						ctx.lineTo(Cx, Cy);
+					}
+					
+					ctx.stroke();
+				}
+			}
+			
+			function handler(event) {
+				var target = event.target;
+				
+				var degree = +target.value;
+				var radian = Math.PI / 180 * degree;
+				
+				outputAngle(degree);
+
+				drawLine(radian);
+			}
+			
+			var canvas = document.getElementById('tutorial');
+			
+			if (canvas.getContext) {
+				var ctx = canvas.getContext('2d');
+				
+				var input = document.getElementById('angle');
+				
+				input.addEventListener('change', handler);
+				
+				var degree = 0;
+			
+				outputAngle(degree);
+				drawLine(degree);
+			}
+		}
+    </script>
+    <style type="text/css">
+        canvas { border: 1px solid #000; }
+    </style>
+</head>
+<body onload="bodyLoadHandler();">
+	<h1>Polar Coordinate System</h1>
+    <div>
+        <label for="angle">Angle</label>
+        <input id="angle" type="number" step="1" />
+        <output id="status"></output>
+    </div>
+    <canvas id="tutorial" width="300" height="300"></canvas>
+</body>
+</html>
