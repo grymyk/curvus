@@ -1,7 +1,7 @@
 # Curvus -- Analytic Geometry on HTML5 Canvas
 
 To Do
-+ кардиоидв
++ кардиоидa
 + єпициклоида
 + гипоциклоида
 + улитка Паскаля
