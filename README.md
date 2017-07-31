@@ -1,7 +1,11 @@
 # Curvus -- Analytic Geometry on HTML5 Canvas
 
 ## To Do
-* кардиоидa
+* conic section
+	* ellipse
+	* parabola
+	* hyperbola
+* cardioid
 * єпициклоида
 * гипоциклоида
 * улитка Паскаля
