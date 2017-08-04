@@ -18,5 +18,6 @@
 * логарифмическая спираль
 * єволюта
 
+## Resources:
 https://www.smashingmagazine.com/2011/10/quick-look-math-animations-javascript/
 
