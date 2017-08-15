@@ -1,0 +1,16 @@
+canvas { border: 1px solid #000; }
+
+dl {
+    overflow: hidden;
+}
+
+dt, dd {
+    margin: 10px 0 0;
+    height: 30px;
+    line-height: 30px;
+}
+
+dt {
+    float: left;
+    width: 125px;
+}

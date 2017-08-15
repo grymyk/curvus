@@ -4,11 +4,13 @@
     <meta charset="utf-8"/>
     <title>Canvas tutorial</title>
     <script type="text/javascript">
+        'use strict';
+
         function draw() {
-            var canvas = document.getElementById('tutorial');
+            let canvas = document.getElementById('tutorial');
             
             if (canvas.getContext) {
-                var ctx = canvas.getContext('2d');
+                let ctx = canvas.getContext('2d');
             }
         }
     </script>
