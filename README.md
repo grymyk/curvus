@@ -6,6 +6,7 @@
 	* parabola
 	* hyperbola
 * cardioid
+* sinusoid
 * єпициклоида
 * гипоциклоида
 * улитка Паскаля
