@@ -29,4 +29,4 @@
 
 ## Style Guide
 * unit: 7
-* size range: 7 -> 840
+* size range: 7 .. 840
