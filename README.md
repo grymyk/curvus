@@ -1,24 +1,29 @@
 # Curvus -- Analytic Geometry on HTML5 Canvas
 
 ## To Do
+* circle
+* sinusoid: curve --> curvus --> bent
+* trochoid: trochos --> wheel
+    * cycloid: cycle --> ring
+    * types: curtate, common, prolate
+* epicycloid
+* hypocycloid
+* involute
 * conic section
 	* ellipse
 	* parabola
 	* hyperbola
+* --
 * cardioid
-* sinusoid
-* єпициклоида
-* гипоциклоида
 * улитка Паскаля
 * неофрида
 * дельтоида
 * астероида
-* циклоида
 * конхоида Никомеда
 * спираль Архимеда
 * логарифмическая спираль
-* єволюта
 
 ## Resources:
-https://www.smashingmagazine.com/2011/10/quick-look-math-animations-javascript/
+math: https://www.smashingmagazine.com/2011/10/quick-look-math-animations-javascript/
+webdesign: https://material.io/
 

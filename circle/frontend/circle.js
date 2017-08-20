@@ -1,5 +1,7 @@
 'use strict';
 
+import './circle.css';
+
 let ctx = null;
 let canvas = null;
 
@@ -25,10 +27,6 @@ function drawLines(options) {
     ctx.stroke();
 }
 
-function clearCanvas() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-}
-
 function drawPolygon(type, value) {
     clearCanvas();
 
@@ -47,7 +45,11 @@ function drawPolygon(type, value) {
     drawLines(options);
 }
 
-function handler(event) {
+function clearCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+function uihandler(event) {
     let target = event.target;
 
     if (target.tagName !== 'INPUT') {
@@ -61,15 +63,49 @@ function handler(event) {
 }
 
 function draw() {
-    canvas = document.getElementById('tutorial');
+    canvas = document.getElementById('whatman');
 
     if (canvas.getContext) {
         ctx = canvas.getContext('2d');
 
         let list = document.getElementById('list');
-
-        list.addEventListener('change', handler);
-
+        list.addEventListener('change', uihandler);
+		        
         drawPolygon();
     }
 }
+
+exports.draw = draw;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

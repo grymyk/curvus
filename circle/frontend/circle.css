@@ -1,0 +1,130 @@
+html, body, div, input {
+    padding: 0;
+    margin: 0;
+    display: block;
+    font-size: 21px;
+}
+
+input {
+    border: 1px solid #000;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 7px;
+    width: 49px;
+}
+
+canvas {
+    border: 1px solid #000;
+    margin: 7px 14px 0;
+    padding: 0;
+}
+
+dl {
+    margin: 7px 0 0 14px;
+}
+
+dt, dd {
+    height: 30px;
+    line-height: 30px;
+    margin: 0 0 21px;
+}
+
+dt {
+    float: left;
+    width: 98px;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+h1 {
+    margin: 35px 0 0;
+}
+
+h2 {
+    margin: 28px 14px 0;
+}
+
+h3 {
+    margin: 14px 14px 0;
+}
+
+.holder {
+   margin: 0 auto;
+   width: 854px;
+   overflow: hidden;
+}
+
+.params_holder {
+    width: 192px;
+    float: left;
+}
+
+.canvas_holder {
+    width: 662px;
+    float: left;
+}
+
+.canvas_holder h3 {
+   text-align: center;
+}
+
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 14px 28px;
+    text-align: right;
+}
+
+p {
+  font-size: 3em;
+    text-align: center;
+}
+
+@media (max-width: 924px) {
+    .holder {
+        width: 512px;
+    }
+
+    .canvas_holder {
+        width: 320px;
+    }
+
+    canvas {
+        width: 304px;
+        height: 510px;
+    }
+}
+
+@media (max-width: 596px) {
+    .holder {
+        width: 320px;
+    }
+
+    .canvas_holder {
+        float: none;
+    }
+
+    canvas {
+        height: 200px;
+    }
+
+    .params_holder {
+        float: none;
+    }
+
+    h1 {
+        margin: 14px 0 0;
+    }
+
+    h2 {
+        margin: 14px 14px 0;
+    }
+
+    h3 {
+        margin: 7px 14px 0;
+    }
+}
