@@ -1,6 +1,8 @@
 # Curvus -- Analytic Geometry on HTML5 Canvas
 
 ## To Do
+* add controls "-", "+"
+* mobile view: aligning elements
 * circle
 * sinusoid: curve --> curvus --> bent
 * trochoid: trochos --> wheel
