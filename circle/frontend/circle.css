@@ -3,6 +3,35 @@ html, body, div, input {
     margin: 0;
     display: block;
     font-size: 21px;
+    font-weight: 500;
+    font-family: Noto, sans-serif;
+}
+
+canvas {
+    border: 1px solid #000;
+    margin: 21px 14px 0;
+    padding: 0;
+    display: block;
+}
+
+dl {
+    margin: 21px 0 0 14px;
+    overflow: hidden;
+}
+
+dt, dd {
+    height: 30px;
+    line-height: 30px;
+}
+
+dt {
+    float: left;
+    margin: 0 7px 21px 0;
+}
+
+dd {
+    float: right;
+    margin: 0 14px 21px 0;
 }
 
 input {
@@ -13,118 +42,97 @@ input {
     width: 49px;
 }
 
-canvas {
-    border: 1px solid #000;
-    margin: 7px 14px 0;
-    padding: 0;
-}
-
-dl {
-    margin: 7px 0 0 14px;
-}
-
-dt, dd {
-    height: 30px;
-    line-height: 30px;
-    margin: 0 0 21px;
-}
-
-dt {
-    float: left;
-    width: 98px;
-}
-
 h1, h2 {
     text-align: center;
 }
 
 h1 {
-    margin: 35px 0 0;
+    margin: 42px 0 0;
 }
 
 h2 {
-    margin: 28px 14px 0;
+    margin: 35px 0 0;
 }
 
-h3 {
-    margin: 14px 14px 0;
+h5, h6 {
+    margin: 0;
+    text-align: center;
 }
 
 .holder {
    margin: 0 auto;
-   width: 854px;
+   width: 100%;
    overflow: hidden;
 }
 
 .params_holder {
-    width: 192px;
+    width: 208px;
     float: left;
 }
 
 .canvas_holder {
-    width: 662px;
-    float: left;
-}
-
-.canvas_holder h3 {
-   text-align: center;
-}
-
-.footer {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: 14px 28px;
-    text-align: right;
+    width: 100%;
+    float: right;
 }
 
 p {
-  font-size: 3em;
+    font-size: 3em;
     text-align: center;
 }
 
-@media (max-width: 924px) {
+/*@media (max-width: 924px) {
     .holder {
         width: 512px;
     }
 
     .canvas_holder {
-        width: 320px;
+        width: 304px;
     }
 
     canvas {
-        width: 304px;
-        height: 510px;
+        width: 1288px;
+        height: 1179px;
     }
-}
+}*/
 
 @media (max-width: 596px) {
+    h1 {
+        margin: 7px 0 0;
+        font-size: 1.5em;
+    }
+
+    h2 {
+        margin: 7px 0 0;
+        font-size: 1em;
+    }
+
     .holder {
         width: 320px;
     }
 
-    .canvas_holder {
-        float: none;
-    }
-
-    canvas {
-        height: 200px;
-    }
-
+    .canvas_holder,
     .params_holder {
         float: none;
     }
 
-    h1 {
-        margin: 14px 0 0;
+    .canvas_holder {
+        margin: 0 auto;
     }
 
-    h2 {
-        margin: 14px 14px 0;
+    .params_holder {
+        width: 215px;
     }
 
-    h3 {
-        margin: 7px 14px 0;
+    canvas {
+        margin: 7px auto 0;
+    }
+
+    dl {
+        margin: 14px 0 0 7px;
+    }
+
+    dt {
+        min-width: 95px;
+        margin: 0 21px 21px 0;
     }
 }
