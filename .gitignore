@@ -2,3 +2,7 @@
 circle/.idea/
 circle/node_modules/
 circle/public/
+build/
+dist/
+node_modules/
+package-lock.json
